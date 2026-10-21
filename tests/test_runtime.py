@@ -93,6 +93,7 @@ class RuntimeTests(unittest.TestCase):
             }
             with (
                 patch.dict("sys.modules", {"psutil": psutil}),
+                patch("serving_bench.experiment.platform.platform", return_value="test"),
                 patch("serving_bench.experiment.subprocess.check_output", return_value="test"),
                 patch("serving_bench.experiment.importlib.metadata.version", return_value="test"),
                 patch("serving_bench.experiment.subprocess.Popen", return_value=process),
